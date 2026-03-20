@@ -112,6 +112,7 @@ fn get_headers(frame: &Frame) -> Vec<String> {
         "BATTERY.chargeLevel".to_string(), // Battery charge level in percentage
         "BATTERY.voltage".to_string(),  // Battery voltage
         "BATTERY.current".to_string(),  // Battery current
+        "BATTERY.designCapacity".to_string(),  // Designed battery capacity
         "BATTERY.currentCapacity".to_string(), // Current battery capacity
         "BATTERY.fullCapacity".to_string(), // Full battery capacity
         "BATTERY.cellNum".to_string(),  // Number of battery cells
@@ -129,6 +130,9 @@ fn get_headers(frame: &Frame) -> Vec<String> {
         "BATTERY.temperature".to_string(),          // Battery temperature
         "BATTERY.minTemperature".to_string(),       // Minimum battery temperature
         "BATTERY.maxTemperature".to_string(),       // Maximum battery temperature
+        "BATTERY.numberOfDischarges".to_string(),   // Number of discharges of the battery
+        "BATTERY.life".to_string(),                 // Battery life (?)
+        "BATTERY.lifetimeRemaining".to_string(),    // Battery lifetime remaining (?)
         "HOME.latitude".to_string(),                // Home point latitude in degrees
         "HOME.longitude".to_string(),               // Home point longitude in degrees
         "HOME.altitude".to_string(),                // Home point altitude in meters
@@ -154,12 +158,14 @@ fn get_headers(frame: &Frame) -> Vec<String> {
         "RECOVER.aircraftSerial".to_string(), // Serial number of the aircraft
         "RECOVER.cameraSerial".to_string(), // Serial number of the camera
         "RECOVER.rcSerial".to_string(),  // Serial number of the remote control
-        "RECOVER.batterySerial".to_string(), // Serial number of the battery
-        "APP.tip".to_string(),           // App tip
-        "APP.warn".to_string(),          // App warning
-        "DETAILS.totalTime".to_string(), // Total flight time in seconds
-        "DETAILS.totalDistance".to_string(), // Total distance flown in meters
-        "DETAILS.maxHeight".to_string(), // Maximum height reached during the flight in meters
+        "RECOVER.batterySerial".to_string(),    // Serial number of the battery
+        "APP.tip".to_string(),                  // App tip
+        "APP.warn".to_string(),                 // App warning
+        "FIRMWARE.version".to_string(),         // Firmware version
+        "FIRMWARE.rcVersion".to_string(),       // RC firmware version
+        "DETAILS.totalTime".to_string(),        // Total flight time in seconds
+        "DETAILS.totalDistance".to_string(),    // Total distance flown in meters
+        "DETAILS.maxHeight".to_string(),        // Maximum height reached during the flight in meters
         "DETAILS.maxHorizontalSpeed".to_string(), // Maximum horizontal speed reached during the flight in meters per second
         "DETAILS.maxVerticalSpeed".to_string(), // Maximum vertical speed reached during the flight in meters per second
         "DETAILS.photoNum".to_string(),         // Number of photos taken during the flight
@@ -170,6 +176,7 @@ fn get_headers(frame: &Frame) -> Vec<String> {
         "DETAILS.rcSerial".to_string(),         // Serial number of the remote control
         "DETAILS.appPlatform".to_string(),      // The platform of the app used (e.g., iOS, Android)
         "DETAILS.appVersion".to_string(),       // Version of the app used
+        "DETAILS.startTime".to_string(),        // Start time of flight
     ]);
 
     headers
