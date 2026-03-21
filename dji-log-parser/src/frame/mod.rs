@@ -173,6 +173,8 @@ pub fn records_to_frames(records: Vec<Record>, details: Details) -> Vec<Frame> {
 
     let mut frame_index = 0;
 
+    let mut dropped_ofdm_count: u32 = 0;
+
     for record in records {
         match record {
             Record::OSD(osd) => {
@@ -352,6 +354,13 @@ pub fn records_to_frames(records: Vec<Record>, details: Details) -> Vec<Frame> {
                 }
             },
             Record::OFDM(ofdm) => {
+                if ofdm.signal_percent == 0 && !ofdm.is_up {
+                    // Some OFDM records are wrongly decrypted as all-zeroes.
+                    // This is a workaround to keep the data clean, by skipping the data from these records.
+                    dropped_ofdm_count += 1;
+                    continue;
+                }
+
                 if ofdm.is_up {
                     frame.rc.uplink_signal = Some(ofdm.signal_percent);
                 } else {
@@ -455,6 +464,13 @@ pub fn records_to_frames(records: Vec<Record>, details: Details) -> Vec<Frame> {
             }
             _ => {}
         }
+    }
+
+    if dropped_ofdm_count > 0 {
+        eprintln!(
+            "Warning: Dropped {} empty OFDM records due to decryption errors while parsing.",
+            dropped_ofdm_count
+        );
     }
 
     frames
