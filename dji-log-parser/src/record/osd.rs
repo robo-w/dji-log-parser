@@ -177,6 +177,9 @@ pub enum DroneType {
     Matrice350RTK,
     Mini4Pro,
     Avata2,
+    Neo,
+    Neo2,
+    Matrice4TD,
     #[serde(untagged)]
     Unknown(u8),
 }
@@ -221,6 +224,9 @@ impl From<u8> for DroneType {
             89 => DroneType::Matrice350RTK,
             93 => DroneType::Mini4Pro,
             94 => DroneType::Avata2,
+            100 => DroneType::Matrice4TD,
+            104 => DroneType::Neo,
+            124 => DroneType::Neo2,
             _ => DroneType::Unknown(value),
         }
     }

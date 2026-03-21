@@ -170,6 +170,7 @@ fn get_headers(frame: &Frame) -> Vec<String> {
         "DETAILS.maxVerticalSpeed".to_string(), // Maximum vertical speed reached during the flight in meters per second
         "DETAILS.photoNum".to_string(),         // Number of photos taken during the flight
         "DETAILS.videoTime".to_string(),        // Total video recording time in seconds
+        "DETAILS.productType".to_string(),      // Name of the aircraft
         "DETAILS.aircraftName".to_string(),     // Name of the aircraft
         "DETAILS.aircraftSerial".to_string(),   // Serial number of the aircraft
         "DETAILS.cameraSerial".to_string(),     // Serial number of the camera

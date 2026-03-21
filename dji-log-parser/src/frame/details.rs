@@ -5,6 +5,7 @@ use tsify_next::Tsify;
 
 use crate::layout::details::Details;
 use crate::layout::details::Platform;
+use crate::layout::details::ProductType;
 
 #[derive(Serialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -24,6 +25,8 @@ pub struct FrameDetails {
     pub photo_num: i32,
     /// Total video recording time in seconds
     pub video_time: i64,
+    /// Type of the aircraft
+    pub product_type: ProductType,
     /// Name of the aircraft
     pub aircraft_name: String,
     /// Serial number of the aircraft
@@ -74,6 +77,7 @@ impl From<Details> for FrameDetails {
             max_vertical_speed: value.max_vertical_speed,
             photo_num: value.capture_num,
             video_time: value.video_time,
+            product_type: value.product_type.clone(),
             aircraft_name: value.aircraft_name.clone(),
             aircraft_sn: value.aircraft_sn.clone(),
             camera_sn: value.camera_sn.clone(),

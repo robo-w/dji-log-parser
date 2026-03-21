@@ -156,7 +156,10 @@ pub enum ProductType {
     Avata,
     Mini4Pro,
     Avata2,
+    Neo2,
     Matrice350RTK,
+    Matrice4TD,
+    Neo,
     #[serde(untagged)]
     Unknown(u8),
 }
@@ -223,7 +226,10 @@ impl From<u8> for ProductType {
             121 => ProductType::Avata,
             126 => ProductType::Mini4Pro,
             152 => ProductType::Avata2,
+            158 => ProductType::Neo2,
             170 => ProductType::Matrice350RTK,
+            178 => ProductType::Matrice4TD,
+            182 => ProductType::Neo,
             _ => ProductType::Unknown(num),
         }
     }
@@ -278,7 +284,10 @@ impl ProductType {
             ProductType::Avata => 5,
             ProductType::Mini4Pro => 2,
             ProductType::Avata2 => 4,
+            ProductType::Neo2 => 2,
             ProductType::Matrice350RTK => 12,
+            ProductType::Matrice4TD => 6,
+            ProductType::Neo => 2,
             _ => 4,
         }
     }
@@ -331,7 +340,10 @@ impl ProductType {
             ProductType::Avata => 1,
             ProductType::Mini4Pro => 1,
             ProductType::Avata2 => 1,
+            ProductType::Neo2 => 1,
             ProductType::Matrice350RTK => 2,
+            ProductType::Matrice4TD => 1,
+            ProductType::Neo => 1,
             _ => 1,
         }
     }
